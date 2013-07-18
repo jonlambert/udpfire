@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+# Hello, this is a little ditty to send UDP packets quickly and easily from CLI. 
+#
+# Whack the script in `/usr/local/bin` (or OS equivelant) 
+# and ensure that it has executable permissions. (`chmod +x *path-to-file*`)
+
+# TODO: Add an install method. Nothing fancy, just for maximum ease of use.
+
+def fire_udp(ip, port, message)
+	require 'socket'
+
+	client = UDPSocket.new
+	if (!message or !port or !ip)
+		args_error
+		exit
+	end
+	client.send message, 0, ip, port
+end
+
+# Display help message to STDOUT
+def help
+	puts "udpfire: Fire a UDP packet towards a host/port."
+	puts "usage: udpfire <ipaddress> <port> <message>"
+	# puts "eg. udpfire 127.0.0.1 80 \"This is a message...\""
+end
+
+# Display ARGV quantity error. Then help.
+def args_error
+	puts "Invalid amount of parameters.\r\n"
+	help
+end
+
+case ARGV.first
+when nil, 'help', '--help', '-h', '-help', '?'
+	help
+	exit
+else 
+	unless ARGV.count == 3 
+		args_error
+		exit
+	end
+
+	fire_udp ARGV[0], ARGV[1], ARGV[2]
+end
