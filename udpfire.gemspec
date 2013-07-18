@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-	s.name        = 'udpfire'
+  s.name        = 'udpfire'
   s.version     = '0.0.1'
   s.date        = '2013-07-18'
   s.summary     = "Fires a UDP packet at a host/port"
@@ -8,4 +8,5 @@ Gem::Specification.new do |s|
   s.email       = 'hello@jonlambert.net'
   s.executables << 'udpfire'
   s.homepage    = 'http://github.com/jonlambert/udpfire'
+  spec.license = 'MIT'
 end
