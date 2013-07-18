@@ -8,5 +8,5 @@ Gem::Specification.new do |s|
   s.email       = 'hello@jonlambert.net'
   s.executables << 'udpfire'
   s.homepage    = 'http://github.com/jonlambert/udpfire'
-  spec.license = 'MIT'
+  spec.license  = 'MIT'
 end
